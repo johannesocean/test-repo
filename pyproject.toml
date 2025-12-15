@@ -1,0 +1,20 @@
+[project]
+name = "automotive-data-dashboard"
+version = "0.1.0"
+description = "A lightweight Streamlit app to process, analyze, and visualize automotive data"
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = [
+    "streamlit>=1.28.0",
+    "pandas>=2.0.0",
+    "plotly>=5.17.0",
+]
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+]

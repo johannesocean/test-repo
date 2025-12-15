@@ -3,7 +3,7 @@ name = "automotive-data-dashboard"
 version = "0.1.0"
 description = "A lightweight Streamlit app to process, analyze, and visualize automotive data"
 readme = "README.md"
-requires-python = ">=3.8"
+requires-python = ">=3.12"
 dependencies = [
     "streamlit>=1.28.0",
     "pandas>=2.0.0",

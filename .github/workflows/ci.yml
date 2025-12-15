@@ -18,7 +18,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
-        python-version: '3.10'
+        python-version: '3.12'
     
     - name: Install dependencies
       run: |
@@ -34,3 +34,4 @@ jobs:
         python -m py_compile src/app.py
         python -m py_compile src/utils.py
         python -m py_compile src/processing/transform.py
+        python -m py_compile src/plotting/charts.py

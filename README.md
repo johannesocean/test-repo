@@ -25,7 +25,7 @@ cd test-repo
 
 2. Install dependencies:
 ```bash
-pip install -e .
+uv pip install -e .
 ```
 
 ## Running the App

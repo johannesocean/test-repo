@@ -38,7 +38,7 @@ def aggregate_by_time(df: pd.DataFrame, freq: str = 'H') -> pd.DataFrame:
         Time-aggregated DataFrame
     """
     df_copy = df.copy()
-    df_copy.set_index('timestamp', inplace=True)
+    df_copy = df_copy.set_index('timestamp')
     
     aggregated = df_copy.groupby('vehicle_id').resample(freq).agg({
         'speed_mph': 'mean',
@@ -53,6 +53,7 @@ def aggregate_by_time(df: pd.DataFrame, freq: str = 'H') -> pd.DataFrame:
 def calculate_efficiency_score(df: pd.DataFrame) -> pd.DataFrame:
     """
     Calculate efficiency score based on speed and fuel consumption.
+    Score is only calculated for vehicles in motion (speed > 0).
     
     Args:
         df: Input DataFrame
@@ -61,8 +62,13 @@ def calculate_efficiency_score(df: pd.DataFrame) -> pd.DataFrame:
         DataFrame with efficiency score added
     """
     df_copy = df.copy()
-    df_copy['efficiency_score'] = (df_copy['fuel_consumption_mpg'] / 
-                                   (df_copy['speed_mph'] + 1)) * 100
+    # Only calculate efficiency for vehicles in motion
+    df_copy['efficiency_score'] = 0.0
+    moving_mask = df_copy['speed_mph'] > 0
+    df_copy.loc[moving_mask, 'efficiency_score'] = (
+        df_copy.loc[moving_mask, 'fuel_consumption_mpg'] / 
+        df_copy.loc[moving_mask, 'speed_mph'] * 100
+    )
     return df_copy
 
 

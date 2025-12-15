@@ -101,8 +101,13 @@ def render_sidebar_filters(df: pd.DataFrame) -> tuple:
     return selected_vehicles, selected_locations, start_date, end_date
 
 
-def apply_filters(df: pd.DataFrame, selected_vehicles: list, selected_locations: list, 
-                  start_date, end_date) -> pd.DataFrame:
+def apply_filters(
+    df: pd.DataFrame,
+    selected_vehicles: list,
+    selected_locations: list,
+    start_date,
+    end_date
+) -> pd.DataFrame:
     """
     Apply filters to the DataFrame.
     

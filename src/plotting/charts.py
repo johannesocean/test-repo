@@ -5,6 +5,10 @@ import plotly.express as px
 import plotly.graph_objects as go
 
 
+# Constants
+HIGH_TEMP_THRESHOLD = 205  # Fahrenheit
+
+
 def create_speed_over_time_chart(df: pd.DataFrame) -> go.Figure:
     """
     Create a line chart showing vehicle speed over time.
@@ -112,7 +116,7 @@ def create_engine_temp_chart(df: pd.DataFrame) -> go.Figure:
         labels={'engine_temp_f': 'Temperature (°F)', 'timestamp': 'Time'}
     )
     fig.add_hline(
-        y=205,
+        y=HIGH_TEMP_THRESHOLD,
         line_dash="dash",
         line_color="red",
         annotation_text="High Temp Threshold"

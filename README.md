@@ -23,9 +23,23 @@ git clone https://github.com/johannesocean/test-repo.git
 cd test-repo
 ```
 
-2. Install dependencies:
+2. Create a virtual environment with Python 3.12:
 ```bash
-uv pip install -e .
+uv venv --python 3.12
+```
+
+3. Activate the virtual environment:
+```bash
+# On Windows
+.venv\Scripts\activate
+
+# On macOS/Linux
+source .venv/bin/activate
+```
+
+4. Install dependencies:
+```bash
+uv sync --extra dev
 ```
 
 ## Running the App

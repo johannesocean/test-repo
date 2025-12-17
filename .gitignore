@@ -24,6 +24,11 @@ wheels/
 *.egg
 MANIFEST
 
+# Testing
+.coverage
+.pytest_cache/
+htmlcov/
+
 # Virtual environments
 .venv
 venv/

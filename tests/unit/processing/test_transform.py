@@ -340,9 +340,9 @@ class TestIdentifyAnomalies:
         result_df = identify_anomalies(input_df)
 
         # Assert
-        assert result_df['high_temp'].iloc[0] == False
-        assert result_df['high_temp'].iloc[1] == True
-        assert result_df['high_temp'].iloc[2] == True
+        assert not result_df['high_temp'].iloc[0]
+        assert result_df['high_temp'].iloc[1]
+        assert result_df['high_temp'].iloc[2]
 
     def test_identify_anomalies_low_efficiency(self) -> None:
         """Test low fuel efficiency anomaly detection."""
@@ -357,9 +357,9 @@ class TestIdentifyAnomalies:
         result_df = identify_anomalies(input_df)
 
         # Assert
-        assert result_df['low_efficiency'].iloc[0] == False
-        assert result_df['low_efficiency'].iloc[1] == True
-        assert result_df['low_efficiency'].iloc[2] == True
+        assert not result_df['low_efficiency'].iloc[0]
+        assert result_df['low_efficiency'].iloc[1]
+        assert result_df['low_efficiency'].iloc[2]
 
     def test_identify_anomalies_high_rpm(self) -> None:
         """Test high RPM anomaly detection."""
@@ -374,9 +374,9 @@ class TestIdentifyAnomalies:
         result_df = identify_anomalies(input_df)
 
         # Assert
-        assert result_df['high_rpm'].iloc[0] == False
-        assert result_df['high_rpm'].iloc[1] == True
-        assert result_df['high_rpm'].iloc[2] == True
+        assert not result_df['high_rpm'].iloc[0]
+        assert result_df['high_rpm'].iloc[1]
+        assert result_df['high_rpm'].iloc[2]
 
     @pytest.mark.parametrize(("temp", "mpg", "rpm", "expected_high_temp", "expected_low_eff", "expected_high_rpm"), [
         (200.0, 25.0, 3000.0, False, False, False),

@@ -22,7 +22,11 @@ def aggregate_by_vehicle(df: pd.DataFrame) -> pd.DataFrame:
         'location': 'first'
     }).reset_index()
     
-    aggregated.columns = ['_'.join(col).strip('_') for col in aggregated.columns.values]
+    # Flatten MultiIndex columns produced by aggregation while preserving simple columns
+    aggregated.columns = [
+        ('_'.join(col).strip('_') if isinstance(col, tuple) else str(col))
+        for col in aggregated.columns.values
+    ]
     return aggregated
 
 

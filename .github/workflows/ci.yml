@@ -25,6 +25,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}  # check out the branch, not a detached HEAD
 
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v5
@@ -56,4 +58,5 @@ jobs:
           git add data/cleaned/contributors.json
           # Only commit when there is actually a change; exit 0 otherwise.
           git diff --cached --quiet || git commit -m "chore: update contributors.json"
-          git push origin HEAD:${{ github.head_ref }}
+          git pull --rebase origin ${{ github.head_ref }}
+          git push --force-with-lease origin HEAD:${{ github.head_ref }}

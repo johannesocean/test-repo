@@ -115,7 +115,7 @@ class TestAggregateByTime:
     """Test suite for aggregate_by_time function."""
 
     @pytest.mark.parametrize(("freq", "expected_freq"), [
-        ("H", "H"),
+        ("h", "h"),
         ("D", "D"),
     ])
     def test_aggregate_by_time_frequencies(self, freq: str, expected_freq: str) -> None:
@@ -163,7 +163,7 @@ class TestAggregateByTime:
         })
 
         # Act
-        result_df = aggregate_by_time(input_df, freq='H')
+        result_df = aggregate_by_time(input_df, freq='h')
 
         # Assert
         assert len(result_df) == 2  # Two hourly buckets
@@ -190,7 +190,7 @@ class TestAggregateByTime:
         })
 
         # Act
-        result_df = aggregate_by_time(input_df, freq='H')
+        result_df = aggregate_by_time(input_df, freq='h')
 
         # Assert
         assert len(result_df) == 4  # 2 vehicles * 2 hours
@@ -211,7 +211,7 @@ class TestAggregateByTime:
         original_index = input_df.index.to_numpy()
 
         # Act
-        aggregate_by_time(input_df, freq='H')
+        aggregate_by_time(input_df, freq='h')
 
         # Assert
         assert (input_df.index.to_numpy() == original_index).all()
